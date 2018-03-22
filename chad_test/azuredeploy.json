@@ -174,12 +174,6 @@
         "description": "The FQDN of the AD Domain created "
       }
     },
-    "addnsName": {
-      "type": "string",
-      "metadata": {
-        "description": "The DNS prefix for the public IP address used by the Load Balancer"
-      }
-    },
     "RDPPort": {
       "type": "int",
       "metadata": {
@@ -224,10 +218,7 @@
       "name": "[parameters('publicIPAddressName')]",
       "location": "[parameters('location')]",
       "properties": {
-        "publicIPAllocationMethod": "[parameters('publicIPAddressType')]",
-        "dnsSettings": {
-          "domainNameLabel": "[parameters('addnsName')]"
-        }
+        "publicIPAllocationMethod": "[parameters('publicIPAddressType')]"
       }
     },
     {

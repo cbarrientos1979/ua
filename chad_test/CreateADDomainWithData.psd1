@@ -19,9 +19,9 @@
         GroupData = @'
             GroupName,Scope,Category,Dept
             G_iropstestapp,Global,Security,Application
-            G_iropstestapplocal,Domain Local,Security,Application
+            G_iropstestapplocal,DomainLocal,Security,Application
             G_iropstestinf,Global,Security,Infrastructure
-            G_iropstestinflocal,Domain Local,Security,Infrastucture
+            G_iropstestinflocal,DomainLocal,Security,Infrastucture
 '@
 
         RootOUs = 'Servers','Accounts','Groups'

@@ -25,10 +25,10 @@
 $templateFile = 'azuredeploy.json'
 $Location  = 'East US'
 $rgname    = 'irops-chad-test'
-$saname    = 'iropschadstoracct'     # Lowercase required
-$addnsName = 'iropschadtest'     # Lowercase required
+$saname    = 'iropschadstoracct1'     # Lowercase required
+$addnsName = 'iropschadtest1'     # Lowercase required
 $assetLocation = "https://raw.githubusercontent.com/cbarrientos1979/ua/master/chad_test/"
-$domainName = 'iropschad.local'
+$domainName = 'iropschad1.local'
 
 # Check that the public dns $addnsName is available
 if (Test-AzureRmDnsAvailability -DomainNameLabel $addnsName -Location $Location)
