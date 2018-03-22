@@ -26,13 +26,13 @@ $templateFile = 'azuredeploy.json'
 $Location  = 'East US'
 $rgname    = 'irops-chad-test'
 $saname    = 'iropschadstoracct1'     # Lowercase required
-#$addnsName = 'iropschadtest1'     # Lowercase required
+$addnsName = 'iropschadtest1'     # Lowercase required
 $assetLocation = "https://raw.githubusercontent.com/cbarrientos1979/ua/master/chad_test/"
 $domainName = 'iropschad1.local'
 
 # Check that the public dns $addnsName is available
-#if (Test-AzureRmDnsAvailability -DomainNameLabel $addnsName -Location $Location)
-#{ 'Available' } else { 'Taken. addnsName must be globally unique.' }
+if (Test-AzureRmDnsAvailability -DomainNameLabel $addnsName -Location $Location)
+{ 'Available' } else { 'Taken. addnsName must be globally unique.' }
 
 # Create the new resource group. Runs quickly.
 New-AzureRmResourceGroup -Name $rgname -Location $Location
@@ -42,7 +42,7 @@ $MyParams = @{
     newStorageAccountName = $saname
     location              = $Location
     domainName            = $domainName
-    #addnsName             = $addnsName
+    addnsName             = $addnsName
     assetLocation         = $assetLocation
    }
 

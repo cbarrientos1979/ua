@@ -21,7 +21,7 @@
             G_iropstestapp,Global,Security,Application
             G_iropstestapplocal,DomainLocal,Security,Application
             G_iropstestinf,Global,Security,Infrastructure
-            G_iropstestinflocal,DomainLocal,Security,Infrastucture
+            G_iropstestinflocal,DomainLocal,Security,Infrastructure
 '@
 
         RootOUs = 'Servers','Accounts','Groups'
