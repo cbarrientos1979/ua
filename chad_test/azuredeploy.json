@@ -235,7 +235,7 @@
       "type": "Microsoft.Network/networkInterfaces",
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Network/virtualNetworks/subnets',parameters('adSubnetName'))]"
+        "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('adSubnetName'))]"
       ],
       "apiVersion": "2015-05-01-preview",
       "properties": {
