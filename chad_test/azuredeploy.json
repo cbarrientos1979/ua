@@ -218,7 +218,7 @@
       "name": "[parameters('publicIPAddressName')]",
       "location": "[parameters('location')]",
       "properties": {
-        "publicIPAllocationMethod": "[parameters('publicIPAddressType')]"
+        "publicIPAllocationMethod": "[parameters('publicIPAddressType')]",
       }
     },
     {
@@ -323,7 +323,7 @@
               },
               "name": "[concat(parameters('adVMName'),'-data-disk1')]",
               "caching": "None",
-              "createOption": "empty",
+              "createOption": "Empty",
               "diskSizeGB": "[variables('adDataDiskSize')]",
               "lun": 0
             }
