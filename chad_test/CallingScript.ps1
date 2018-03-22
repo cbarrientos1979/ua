@@ -24,26 +24,43 @@
 # something unique for you. Leave the last two characters in each.
 $templateFile = 'azuredeploy.json'
 $Location  = 'East US'
-$rgname    = 'irops-chad-test'
-$saname    = 'iropschadstoracct1'     # Lowercase required
-$addnsName = 'iropschadtest1'     # Lowercase required
+$rgname    = 'core-rg-chad'
+$saname    = 'iropstestchad1'     # Lowercase required
+#$addnsName = 'iropschadtest1'     # Lowercase required
 $assetLocation = "https://raw.githubusercontent.com/cbarrientos1979/ua/master/chad_test/"
 $domainName = 'iropschad1.local'
+#$vnetAddRange = "10.0.3.0/24"
+$adSubnetName = "core-ad-subnet-chad"
+$adSubnet = "172.22.11.224/27"
+$firstDCIP = "172.22.11.228"
+$firstDCName = "chadtestdc1"
+$adminAcct = "iropsda"
+$vmSize = "Standard_D2"
+$vnetName = "core-vnet-chad"
 
 # Check that the public dns $addnsName is available
-if (Test-AzureRmDnsAvailability -DomainNameLabel $addnsName -Location $Location)
-{ 'Available' } else { 'Taken. addnsName must be globally unique.' }
+#if (Test-AzureRmDnsAvailability -DomainNameLabel $addnsName -Location $Location)
+#{ 'Available' } else { 'Taken. addnsName must be globally unique.' }
 
 # Create the new resource group. Runs quickly.
-New-AzureRmResourceGroup -Name $rgname -Location $Location
+#New-AzureRmResourceGroup -Name $rgname -Location $Location
 
 # Parameters for the template and configuration
 $MyParams = @{
     newStorageAccountName = $saname
     location              = $Location
     domainName            = $domainName
-    addnsName             = $addnsName
+    #addnsName             = $addnsName
     assetLocation         = $assetLocation
+    existingVirtualNetworkName = $vnetName
+    existingVirtualNetworkResourceGroup = $rgname
+    #virtualNetworkAddressRange = $vnetAddRange
+    adSubnet = $adSubnet
+    adNicIPAddress = $firstDCIP
+    adVMName = $firstDCName
+    adminUsername = $adminAcct
+    adVMSize = $vmSize
+    adSubnetName = $adSubnetName
    }
 
 # Splat the parameters on New-AzureRmResourceGroupDeployment  
@@ -59,9 +76,9 @@ $SplatParams = @{
 New-AzureRmResourceGroupDeployment @SplatParams -Verbose
 
 # Find the VM IP and FQDN
-$PublicAddress = (Get-AzureRmPublicIpAddress -ResourceGroupName $rgname)[0]
-$IP   = $PublicAddress.IpAddress
-$FQDN = $PublicAddress.DnsSettings.Fqdn
+#$PublicAddress = (Get-AzureRmPublicIpAddress -ResourceGroupName $rgname)[0]
+#$IP   = $PublicAddress.IpAddress
+#$FQDN = $PublicAddress.DnsSettings.Fqdn
 
 # # RDP either way
 # Start-Process -FilePath mstsc.exe -ArgumentList "/v:$FQDN"
