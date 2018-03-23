@@ -223,9 +223,6 @@
       "type": "Microsoft.Network/virtualNetworks/subnets",
       "name": "[concat(parameters('existingVirtualNetworkName'), '/', parameters('adSubnetName'))]",
       "location": "[resourceGroup().location]",
-      "dependsOn": [
-        "[resourceId(parameters('existingVirtualNetworkResourceGroup'), 'Microsoft.Network/virtualNetworks', parameters('existingVirtualNetworkName'))]"
-      ],
       "properties": {
         "addressPrefix": "[parameters('adSubnet')]"
       }
@@ -234,9 +231,6 @@
       "name": "[parameters('adNicName')]",
       "type": "Microsoft.Network/networkInterfaces",
       "location": "[resourceGroup().location]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('existingVirtualNetworkName'), parameters('adSubnetName'))]"
-      ],
       "apiVersion": "2015-05-01-preview",
       "properties": {
         "ipConfigurations": [
